@@ -1,6 +1,6 @@
-div {
+/*div {
     border: 1px solid red;
-}
+}*/
 
 body {
     background-color: grey !important;
@@ -14,7 +14,7 @@ header {
     margin-bottom: 10px;
 }
 
-.box, #battleBox {
+.box {
     background-color: bisque;
     margin: auto;
     width: 80%;
@@ -22,15 +22,9 @@ header {
     padding: 15px;
 }
 
-#battleBox {
-    height: 375px;
-}
-
-.charBox, .tag {
-    text-align: center;
-}
-
-.tag {
-    background-color: grey;
-    color: white;
+/* Centers the button */
+.startButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

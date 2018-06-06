@@ -19,14 +19,17 @@ $(document).ready(function() {
     // Test questions
     // console.log(questions.thirdQuestion.answer)
 
-    
-
-
     function start(){
-
+        console.log("in start function")
     }
 
     // Greet the player
     $(".welcome").append('<h2 style="text-align:center">Welcome! Press start to play!</h2>')
+    $(".startButton").append('<button style="" type="button" class="btn btn-danger btn-lg">Start</button>')
+
+    // Start the game once the start button is pressed
+    $(".startButton").on("click", function(){
+        start();
+    })
 
 });

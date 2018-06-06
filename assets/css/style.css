@@ -1,0 +1,36 @@
+div {
+    border: 1px solid red;
+}
+
+body {
+    background-color: grey !important;
+}
+
+header {
+    background: crimson;
+    border-bottom: 1px solid black;
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.box, #battleBox {
+    background-color: bisque;
+    margin: auto;
+    width: 80%;
+    border: 1px solid black;
+    padding: 15px;
+}
+
+#battleBox {
+    height: 375px;
+}
+
+.charBox, .tag {
+    text-align: center;
+}
+
+.tag {
+    background-color: grey;
+    color: white;
+}

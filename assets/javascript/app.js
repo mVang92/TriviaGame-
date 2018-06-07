@@ -23,11 +23,10 @@ $(document).ready(function(){
         var timer;
         var timerOn = false;
 
-        // 
         function timedCount() {
-            $(".welcome").html(count);
+            $(".welcome").html('<h2 style="text-align:center">' + count + '</h2>');
             if (count === -1){
-                alert("done")
+                $(".welcome").html('<h2 style="text-align:center">Time is up!</h2>');
                 count = 0;
                 stopCount();
             } else {
@@ -48,17 +47,21 @@ $(document).ready(function(){
             console.log("stop count")
             timerOn = false;
             count = 0;
-            $(".welcome").html(count);
         }
 
         // Removes welcome text and buttons before inserting questions and answers
-        $(".startButton").prev().addBack().remove();
+        // $(".startButton").prev().addBack().remove();
+        $(".startButton").empty();
 
         // Loop through the questions array and put the questions into HTML
         for (i = 0; i < questions.length; i++){
             $(".questions").append('<h4>'+ questions[i].ask + '</h4><br>');
+            $(".questions").is(":checked");
         }
 
+        
+
+        // Begin timer
         startCount();
         
     }

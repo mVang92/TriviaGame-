@@ -19,7 +19,7 @@ $(document).ready(function(){
     // Starts the game
     function start(){
         // Timer variables
-        var count = 5;
+        var count = 10;
         var timer;
         var timerOn = false;
 
@@ -56,9 +56,8 @@ $(document).ready(function(){
         // Loop through the questions array and put the questions into HTML
         for (i = 0; i < questions.length; i++){
             $(".questions").append('<h4>'+ questions[i].ask + '</h4><br>');
-            $(".questions").is(":checked");
+            $(".questions").append('<label>' + questions[i].answer + '</label><input type="radio" name="radio-1" id="radio-1"><br>');
         }
-
         
 
         // Begin timer

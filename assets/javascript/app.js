@@ -4,16 +4,13 @@ $(document).ready(function(){
     // Questions object
     var questions = [{
             ask: "Suppose there is an alien civilization 66 million light-years away from Earth. What would they see if they looked at the Earth right now?",
-            answer: "a"
+            answer: ["1a", "1b", "1c", "1d"]
         },{
             ask: "Question 2?",
-            answer: "b"
+            answer: ["2a", "2b", "2c", "2d"]
         },{
             ask: "Question 3?",
-            answer: "c"
-        },{
-            ask: "Question 4?",
-            answer: "d"
+            answer: ["3a", "3b", "3c", "3d"]
     }];
 
     // Starts the game
@@ -30,7 +27,6 @@ $(document).ready(function(){
                 count = 0;
                 stopCount();
             } else {
-                console.log(count)
                 count -= 1;
                 time = setTimeout(timedCount, 1000);
             }
@@ -54,11 +50,11 @@ $(document).ready(function(){
         $(".startButton").empty();
 
         // Loop through the questions array and put the questions into HTML
-        for (i = 0; i < questions.length; i++){
-            $(".questions").append('<h4>'+ questions[i].ask + '</h4><br>');
-            $(".questions").is(":checked");
+        for (question = 0; question < questions.length; question++){
+            $(".questions").append('<h4>'+ questions[question].ask + '</h4><br>');
+            $(".questions").append('<h5><label for="radio-1">'+ questions[question].answer + '</label><input type="radio" name="radio-1" id="radio-1"></h5><br>');
+                
         }
-
         
 
         // Begin timer

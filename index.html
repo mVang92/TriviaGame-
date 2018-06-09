@@ -24,10 +24,44 @@
             <br>
             <!-- Second Row -->
             <div class="box row">
-                <div class="col-lg-12 startButton"></div>
+                <div id="format" class="col-lg-12">
+                    <div class="startButton"></div>
+                </div>    
+            </div>
+            <br>
+            <div class="box row">
                 <!-- Third Row -->
-                <div class="row">
-                    <div class="col-lg-12 questions"></div>
+                <div class="row trivia">
+                    <!-- First Question -->
+                    <div class="col-lg-12 questions">Suppose there is an alien civilization 66 million light-years away from Earth. What would they see if they looked at the Earth right now?
+                        <ul class="choices">
+                            <li><label><input name="firstQuestion" value="right" type="radio"> The Dinosaurs</label></li>
+                            <li><label><input name="firstQuestion" value="wrong" type="radio"> The Roman Empire</label></li>
+                            <li><label><input name="firstQuestion" value="wrong" type="radio"> An ocean planet</label></li>
+                            <li><label><input name="firstQuestion" value="wrong" type="radio"> The Incredibles</label></li>
+                        </ul>
+                    </div>
+
+                    <!-- Second Question -->
+                    <div class="col-lg-12 questions">What is the closest star system to our solar system?
+                        <ul class="choices">
+                            <li><label><input name="secondQuestion" value="wrong" type="radio"> Betelgeuse</label></li>
+                            <li><label><input name="secondQuestion" value="wrong" type="radio"> Sirius</label></li>
+                            <li><label><input name="secondQuestion" value="right" type="radio"> Alpha Centauri</label></li>
+                            <li><label><input name="secondQuestion" value="wrong" type="radio"> The Moon</label></li>
+                        </ul>
+                    </div>
+
+                    <!-- Third Question -->
+                    <div class="col-lg-12 questions">The largest moon in our solar system belongs to which one of these planets? (Excluding Pluto)
+                        <ul class="choices">
+                            <li><label><input name="thirdQuestion" value="wrong" type="radio"> Gliese 581</label></li>
+                            <li><label><input name="thirdQuestion" value="wrong" type="radio"> Saturn</label></li>
+                            <li><label><input name="thirdQuestion" value="right" type="radio"> Jupiter</label></li>
+                            <li><label><input name="thirdQuestion" value="wrong" type="radio"> Neptune</label></li>
+                        </ul>
+                    </div>
+                    <input class="next" type="button" value="Next Question">
                 </div>
             </div>
                 <!-- <label for="radio-1">New York</label>

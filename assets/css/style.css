@@ -14,7 +14,7 @@ header {
     margin-bottom: 10px;
 }
 
-.box {
+.box, .boxQuestion {
     background-color: bisque;
     margin: auto;
     border: 1px solid black;
@@ -26,4 +26,8 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+}   
+
+#format {
+    height: 50px;
 }

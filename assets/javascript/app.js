@@ -1,4 +1,8 @@
 $(document).ready(function(){
+    var count = 5;
+    var timer;
+    var score;
+    var timerOn = false;
     $(".welcome").append('<h2 style="text-align:center">Welcome! Press start to play!</h2>');
     $(".startButton").append('<button style="" type="button" class="btn btn-danger btn-lg">Start</button>');
     $(".trivia").hide();
@@ -8,6 +12,7 @@ $(document).ready(function(){
 
     $(".startButton").click(function(){
         $(".nextButton").append('<button style="" type="button" class="btn btn-danger btn-lg">Next Question</button>');
+        $(".startButton").hide();
         $(".nextButton").fadeIn();
         $(".triviaBox").fadeIn();
         $(".nextBox").fadeIn();
@@ -30,45 +35,52 @@ $(document).ready(function(){
 
     //Click listener to get next question
     $(".nextButton").click(function() {
+        $(".nextButton").hide();
+        start()
         //Current question disappears
-        $(this).prop("disabled",true);
         $($questions.get(currentQuestion)).fadeOut(function() {
-            //Increment current question by 1. Parse to int to prevent cascade
+            //Increment current question by 1. 
             currentQuestion++;
+            // console.log(currentQuestion)
+            // Parse to int to prevent cascade
             $(".welcome").html('<h2 style="text-align:center">Question ' + parseInt(currentQuestion  + 1) + '</h2>')
-            //Next question
-            $($questions.get(currentQuestion)).fadeIn();
-            if (currentQuestion == 3){
-                $(".nextButton").hide();
-                $('.trivia').text(score);
+            // Reset the clock
+            count = 5;
+            
+            if (score >= 1){
+                //Next question
+                $($questions.get(currentQuestion)).fadeIn();
+                $(".nextButton").fadeIn();
             }
+            // if (count == -1){
+            //     $($questions.get(currentQuestion)).fadeIn();
+            // }
+            // if (currentQuestion == 3){
+            //     console.log(currentQuestion)
+            // }
         });
     });
 
     // Scoring function
     function setScore() {
-        var score = $("input:checked[value=right]").length;
-        // $('#score').text(score);
-        score++;
+        score = 0;
+        score = $("input:checked[value=right]").length;
+        score++
         console.log(score);
     }
     
     //Set score when user chooses right choice
     $("input").change(setScore);
-
-    // Starts the game
+    
+    // Starts timer
     function start(){
-        // Timer variables
-        var count = 5;
-        var timer;
-        var timerOn = false;
-
         function timedCount() {
-            $(".startButton").html('<h2 style="text-align:center">' + count + '</h2>');
+            $(".timer").html('<h2 style="text-align:center">' + count + '</h2>');
             if (count === -1){
-                $(".startButton").html('<h2 style="text-align:center">Time is up!</h2>');
+                $(".timer").html('<h2 style="text-align:center">Time is up!</h2>');
                 count = 0;
                 stopCount();
+
             } else {
                 count -= 1;
                 time = setTimeout(timedCount, 1000);
@@ -88,11 +100,9 @@ $(document).ready(function(){
             count = 0;
         }
 
-    // Begin timer
-    startCount();
-    //Set score when initialized
-    setScore();
-        
+        // Begin timer
+        startCount();
+        //Set score when initialized
+        setScore();
     }
-
 });

@@ -30,7 +30,7 @@ header {
 }
 
 /* Centers the button */
-.startButton, .nextButton {
+.startButton, .nextButton, .timer {
     display: flex;
     align-items: center;
     justify-content: center;

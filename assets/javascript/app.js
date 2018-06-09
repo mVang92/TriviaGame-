@@ -1,5 +1,3 @@
-// Make an object of questions
-
 $(document).ready(function(){
     $(".welcome").append('<h2 style="text-align:center">Welcome! Press start to play!</h2>');
     $(".startButton").append('<button style="" type="button" class="btn btn-danger btn-lg">Start</button>');
@@ -8,7 +6,7 @@ $(document).ready(function(){
     $(".nextBox").hide();
     $(".triviaBox").hide();
 
-    $(".startButton").click(function() {
+    $(".startButton").click(function(){
         $(".nextButton").append('<button style="" type="button" class="btn btn-danger btn-lg">Next Question</button>');
         $(".nextButton").fadeIn();
         $(".triviaBox").fadeIn();
@@ -30,15 +28,20 @@ $(document).ready(function(){
     //Show the first question
     $($questions.get(currentQuestion)).fadeIn();
 
-    //Click listener to get next question...
+    //Click listener to get next question
     $(".nextButton").click(function() {
-        //Current question disappears...
+        //Current question disappears
+        $(this).prop("disabled",true);
         $($questions.get(currentQuestion)).fadeOut(function() {
             //Increment current question by 1. Parse to int to prevent cascade
             currentQuestion++;
             $(".welcome").html('<h2 style="text-align:center">Question ' + parseInt(currentQuestion  + 1) + '</h2>')
-            //Next question...
+            //Next question
             $($questions.get(currentQuestion)).fadeIn();
+            if (currentQuestion == 3){
+                $(".nextButton").hide();
+                $('.trivia').text(score);
+            }
         });
     });
 

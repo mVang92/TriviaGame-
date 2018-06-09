@@ -46,19 +46,14 @@ $(document).ready(function(){
             $(".welcome").html('<h2 style="text-align:center">Question ' + parseInt(currentQuestion  + 1) + '</h2>')
             // Reset the clock
             count = 5;
+            $($questions.get(currentQuestion)).fadeIn();
+            $(".nextButton").fadeIn();
             
-            if (score >= 1){
-                //Next question
-                $($questions.get(currentQuestion)).fadeIn();
-                $(".nextButton").fadeIn();
-            }
-            // if (count == -1){
-            //     $($questions.get(currentQuestion)).fadeIn();
-            // }
             // if (currentQuestion == 3){
             //     console.log(currentQuestion)
             // }
         });
+        
     });
 
     // Scoring function
@@ -76,8 +71,26 @@ $(document).ready(function(){
     function start(){
         function timedCount() {
             $(".timer").html('<h2 style="text-align:center">' + count + '</h2>');
+
             if (count === -1){
                 $(".timer").html('<h2 style="text-align:center">Time is up!</h2>');
+                $($questions.get(currentQuestion)).fadeOut(function() {
+                    //Increment current question by 1. 
+                    currentQuestion++;
+                    // console.log(currentQuestion)
+                    // Parse to int to prevent cascade
+                    $(".welcome").html('<h2 style="text-align:center">Question ' + parseInt(currentQuestion  + 1) + '</h2>')
+                    // Reset the clock
+                    count = 5;
+                    $($questions.get(currentQuestion)).fadeIn();
+                    $(".nextButton").fadeIn();
+                    
+                    // if (currentQuestion == 3){
+                    //     console.log(currentQuestion)
+                    // }
+                    setTimeout(start, 1000)
+                });
+
                 count = 0;
                 stopCount();
 

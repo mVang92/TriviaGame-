@@ -1,121 +1,115 @@
 $(document).ready(function(){
     var count = 5;
-    var timer;
     var score;
     var timerOn = false;
     $(".welcome").append('<h2 style="text-align:center">Welcome! Press start to play!</h2>');
-    $(".startButton").append('<button style="" type="button" class="btn btn-danger btn-lg">Start</button>');
+    $("#startButton").append('<button style="" type="button" class="btn btn-danger btn-lg">Start</button>');
     $(".trivia").hide();
-    $(".nextButton").hide();
+    $("#nextButton").hide();
     $(".nextBox").hide();
     $(".triviaBox").hide();
 
-    $(".startButton").click(function(){
-        $(".nextButton").append('<button style="" type="button" class="btn btn-danger btn-lg">Next Question</button>');
-        $(".startButton").hide();
-        $(".nextButton").fadeIn();
+    $("#startButton").click(function(){
+        $("#nextButton").append('<button style="" type="button" class="btn btn-danger btn-lg">Next Question</button>');
+        $("#startButton").hide();
+        $("#nextButton").fadeIn();
         $(".triviaBox").fadeIn();
         $(".nextBox").fadeIn();
         $(".trivia").fadeIn();
         $(".welcome").html('<h2 style="text-align:center">Question 1</h2>')
         // Start the game
-        start();
+        running();
     });
 
-    //Total number of questions
-    var totalNumQuestions = $(".questions");
-    //Display current question, sets it at first question
-    var currentQuestion = 0;
-    //jQuery variable
-    $questions = $(".questions");
-    //Hide all of the questions
-    $questions.hide();
-    //Show the first question
-    $($questions.get(currentQuestion)).fadeIn();
-
-    //Click listener to get next question
-    $(".nextButton").click(function() {
-        $(".nextButton").hide();
-        start()
-        //Current question disappears
-        $($questions.get(currentQuestion)).fadeOut(function() {
-            //Increment current question by 1. 
-            currentQuestion++;
-            // console.log(currentQuestion)
-            // Parse to int to prevent cascade
-            $(".welcome").html('<h2 style="text-align:center">Question ' + parseInt(currentQuestion  + 1) + '</h2>')
-            // Reset the clock
-            count = 5;
-            $($questions.get(currentQuestion)).fadeIn();
-            $(".nextButton").fadeIn();
-            
-            // if (currentQuestion == 3){
-            //     console.log(currentQuestion)
-            // }
+    function running(){
+        //Total number of questions
+        // var totalNumQuestions = $(".questions");
+        //Display current question, sets it at first question
+        var currentQuestion = 0;
+        //jQuery variable
+        $questions = $(".questions");
+        //Hide all of the questions
+        $questions.hide();
+        //Show the first question
+        $($questions.get(currentQuestion)).fadeIn();
+        timer()
+        //Click listener to get next question
+        $("#nextButton").click(function() {
+            $("#nextButton").hide();
+            timer()
+            //Current question disappears
+            $($questions.get(currentQuestion)).fadeOut(function() {
+                //Increment current question by 1. 
+                currentQuestion++;
+                // console.log(currentQuestion)
+                // Parse to int to prevent cascade
+                $(".welcome").html('<h2 style="text-align:center">Question ' + parseInt(currentQuestion  + 1) + '</h2>')
+                // Reset the clock
+                count = 5;
+                $($questions.get(currentQuestion)).fadeIn();
+                $("#nextButton").fadeIn();
+            });
         });
-        
-    });
-
-    // Scoring function
-    function setScore() {
-        score = 0;
-        score = $("input:checked[value=right]").length;
-        score++
-        console.log(score);
-    }
     
-    //Set score when user chooses right choice
-    $("input").change(setScore);
-    
-    // Starts timer
-    function start(){
-        function timedCount() {
-            $(".timer").html('<h2 style="text-align:center">' + count + '</h2>');
+        // Scoring function
+        function setScore() {
+            score = 0;
+            score = $("input:checked[value=right]").length;
+            score++
+            console.log(score);
+        }
 
-            if (count === -1){
-                $(".timer").html('<h2 style="text-align:center">Time is up!</h2>');
-                $($questions.get(currentQuestion)).fadeOut(function() {
-                    //Increment current question by 1. 
-                    currentQuestion++;
-                    // console.log(currentQuestion)
-                    // Parse to int to prevent cascade
-                    $(".welcome").html('<h2 style="text-align:center">Question ' + parseInt(currentQuestion  + 1) + '</h2>')
-                    // Reset the clock
-                    count = 5;
-                    $($questions.get(currentQuestion)).fadeIn();
-                    $(".nextButton").fadeIn();
+        // Starts timer
+        function timer(){
+            function timedCount() {
+                $("#timer").html('<h2 style="text-align:center">' + count + '</h2>');
+
+                if (count === -1){
+                    $("#timer").html('<h2 style="text-align:center">Time is up!</h2>');
+                    $($questions.get(currentQuestion)).fadeOut(function() {
+                        //Increment current question by 1. 
+                        currentQuestion++;
+                        // console.log(currentQuestion)
+                        // Parse to int to prevent cascade
+                        $(".welcome").html('<h2 style="text-align:center">Question ' + parseInt(currentQuestion  + 1) + '</h2>')
+                        // Reset the clock
+                        count = 5;
+                        $($questions.get(currentQuestion)).fadeIn();
+                        $(".nextButton").fadeIn();
+                        
+                        // if (currentQuestion == 3){
+                        //     console.log(currentQuestion)
+                        // }
+                        setTimeout(timer, 1000)
+                    });
+
+                    count = 0;
+                    stopCount();
+
+                } else {
+                    count -= 1;
+                    time = setTimeout(timedCount, 1000);
+                }
+            }
                     
-                    // if (currentQuestion == 3){
-                    //     console.log(currentQuestion)
-                    // }
-                    setTimeout(start, 1000)
-                });
+            function startCount() {
+                if (!timerOn) {
+                    timerOn = true;
+                    timedCount();
+                }
+            }
 
+            function stopCount() {
+                console.log("stop count")
+                timerOn = false;
                 count = 0;
-                stopCount();
-
-            } else {
-                count -= 1;
-                time = setTimeout(timedCount, 1000);
             }
-        }
-                
-        function startCount() {
-            if (!timerOn) {
-                timerOn = true;
-                timedCount();
-            }
-        }
-
-        function stopCount() {
-            console.log("stop count")
-            timerOn = false;
-            count = 0;
-        }
-
         // Begin timer
         startCount();
-        //Set score when initialized
-        setScore();
+        }
+    //Set score when user chooses right choice
+    $("input").change(setScore);
+    //Set score when initialized
+    setScore();
     }
 });

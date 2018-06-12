@@ -12,71 +12,39 @@
             integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     </head>
 
-    <body>
+    <body background="assets/images/hubble.jpg">
         <header>
             <h1>Astronomy Trivia Game</h1>
         </header>
-        <div class="container">
-            <!-- First Row -->
-            <div class="box row">
-                <div class="col-lg-12 welcome"></div>
+        <div class="container box">
+            
+            <div class="row">
+                <div class="welcome col-lg-12"></div>
             </div>
+            <hr>
+            <div class="row">
+                <div id="startButton" class="col-lg-12"></div>
+            </div>
+            <div class="row">
+                <div id="timer" class="col-lg-12"></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div id="quiz" class="col-lg-12"></div>
+            </div> 
             <br>
-
-            <!-- Second Row -->
-            <div class="box row">
-                <div id="format" class="col-lg-12">
-                    <div id="startButton"></div>
-                    <div id="timer"></div>
-                </div>    
-            </div>
-            <div class="triviaBox row">
-
-                <!-- Third Row -->
-                <div class="row trivia">
-
-                    <!-- First Question -->
-                    <div class="col-lg-12 questions">
-                        <h3>Suppose there is an alien civilization 66 million light-years away from Earth. What would they see if they looked at the Earth right now?</h3>
-                        <ul class="choices">
-                            <li><label><input name="1q" value="right" type="radio"> The Dinosaurs</label></li>
-                            <li><label><input name="1q" value="wrong" type="radio"> The Roman Empire</label></li>
-                            <li><label><input name="1q" value="wrong" type="radio"> An ocean planet</label></li>
-                            <li><label><input name="1q" value="wrong" type="radio"> The Incredibles</label></li>
-                        </ul>
-                    </div>
-                    
-                    <!-- Second Question -->
-                    <div class="col-lg-12 questions">
-                        <h3>What is the closest star system to our solar system?</h3>
-                        <ul class="choices">
-                            <li><label><input name="2q" value="wrong" type="radio"> Betelgeuse</label></li>
-                            <li><label><input name="2q" value="wrong" type="radio"> Sirius</label></li>
-                            <li><label><input name="2q" value="right" type="radio"> Alpha Centauri</label></li>
-                            <li><label><input name="2q" value="wrong" type="radio"> The Moon</label></li>
-                        </ul>
-                    </div>
-
-                    <!-- Third Question -->
-                    <div class="col-lg-12 questions">
-                        <h3>The largest moon in our solar system belongs to which one of these planets?</h3>
-                        <ul class="choices">
-                            <li><label><input name="3q" value="wrong" type="radio"> Gliese 581</label></li>
-                            <li><label><input name="3q" value="wrong" type="radio"> Saturn</label></li>
-                            <li><label><input name="3q" value="right" type="radio"> Jupiter</label></li>
-                            <li><label><input name="3q" value="wrong" type="radio"> Neptune</label></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="nextBox row">
+            <div class="row">
                 <div class="col-lg-12">
-                    <div id="nextButton"></div>
+                    <button id="submit">Submit Quiz</button> 
+                    <div id="correctResults"></div>
+                    <div id="wrongResults"></div>
                 </div>
             </div>
             <br>
         </div>
+        
         <!-- Javasript link source -->
         <script type="text/javascript" src="assets/javascript/app.js"></script>
     </body>
+
 </html>
